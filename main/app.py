@@ -7,7 +7,6 @@ client = OpenAI(
     api_key = iapi
 )
 
-
 def generateImage(userprompt):
     try:
         response = client.images.generate(
