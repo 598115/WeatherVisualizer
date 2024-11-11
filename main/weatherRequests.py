@@ -28,7 +28,8 @@ def makeWeatherDataRequest(url, headers, params):
     if response.status_code == 200:
         # Parse the JSON response
         data = response.json()
-        # Process the data as needed
-        print(json.dumps(data, indent=2))
+        # Process the data as neededc
+        with open('weather_data.json', 'w') as file:
+            json.dump(data, file, indent=2)
     else:
         print(f"Error: {response.status_code}")

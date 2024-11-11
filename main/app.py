@@ -28,4 +28,4 @@ interface = gr.Interface(
     title="AI weather visualizer.\nWeather data provided by MET Norway.\nImage generation provided by OpenAI",
 )
 
-interface.launch()
+interface.launch(share=True)
