@@ -2,3 +2,4 @@ main/util/apikey.py
 main/util/__pycache__
 main/__pycache__
 certificate.pem
+main\__pycache__\gradio.cpython-312.pyc

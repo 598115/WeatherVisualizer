@@ -33,3 +33,5 @@ def makeWeatherDataRequest(url, headers, params):
             json.dump(data, file, indent=2)
     else:
         print(f"Error: {response.status_code}")
+
+makeWeatherDataRequest(url, headers, params)
