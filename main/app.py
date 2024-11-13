@@ -1,6 +1,6 @@
 import gradio as gr
 from appfunction import appfunction
-
+from urllib.parse import urlparse, parse_qs
 
 mytheme = gr.themes.Base(
     primary_hue="indigo",
@@ -15,10 +15,9 @@ mytheme = gr.themes.Base(
     body_text_weight='600',
     embed_radius='*radius_xxl',
     background_fill_primary='*secondary_50',
-    background_fill_primary_dark='#91BAD6'
+    background_fill_primary_dark='#91BAD6'  
 )
 
-    
 with gr.Blocks(theme=mytheme, css="""
     .custom-textbox {
         background-color: #1d3bd1;
@@ -30,20 +29,37 @@ with gr.Blocks(theme=mytheme, css="""
         background-color: #91BAD6 !important;
         color: #0000FF; 
     }
+    .textbox-custom input, .textbox-custom textarea {
+    color: white !important;  /* Sets text color to white */
+}
 """) as interface:
     gr.Markdown("## AI Weather Visualizer\nWeather data provided by MET Norway.\nImage generation provided by OpenAI")
+    gr.Markdown(""" This service gives you current weather information on a 
+                given location. AI is used to generate a picture of how you can expect the weather to look like at the location. 
+                AI is also used to give you advice like what to wear according to the weather.
+                To start, input the coordinates of your desired location. 
+                You can use the interactive map to find the coordinates. Then click the get weather data button.
+                The coordinates must be formatted as a decimal number with two decimal places or else the default location of Bergen is used""")
+
+    map_component = gr.HTML(f"""
+        <iframe src="https://598115.github.io/interactive-map/map.html" width="100%" height="500px"></iframe>
+    """)
+
+    with gr.Row():
+        lat = gr.Textbox(label="Latitude", placeholder="60.39", elem_classes="textbox-custom")
+        long = gr.Textbox(label="Longitude", placeholder="5.32", elem_classes="textbox-custom")
 
     # Button to trigger image generation
-    generate_button = gr.Button("Generate Weather Image")
+    generate_button = gr.Button("Get weather data")
 
     # Output for the generated image
     image_output = gr.Image(label="Generated Image", width=512, height=512, container=True)
 
     # Textbox for generated text
-    text_output = gr.Textbox(label="Recommendations for the weather", placeholder="Text generates here...", lines=5, elem_classes="custom-textbox")
+    text_output = gr.Textbox(label="Recommendations for the weather", placeholder="Text generates here...", lines=10, elem_classes="custom-textbox")
 
     # Set up the button 
-    generate_button.click(appfunction, inputs=None, outputs=[image_output, text_output])
+    generate_button.click(fn=appfunction, inputs=[lat, long], outputs=[image_output, text_output])
 
-# Launch the Gradio app
-interface.launch()
+# Launch app
+interface.launch(share=True)
