@@ -16,7 +16,7 @@
 
 **Note**: This is an HVL student project, not intended for commercial use. Its purpose is for learning only.
 
-Weather data is from **MET Norway**. We have no affiliation with MET Norway.
+Weather data is from **MET Norway**. We have no affiliation with **MET Norway**.
 
 Image Generation Provided by **OpenAI**
 
