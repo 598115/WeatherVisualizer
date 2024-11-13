@@ -1,6 +1,5 @@
 import gradio as gr
 from appfunction import appfunction
-from urllib.parse import urlparse, parse_qs
 
 mytheme = gr.themes.Base(
     primary_hue="indigo",
