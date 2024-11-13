@@ -3,7 +3,8 @@
 def buildQuery(weatherCode, temp, humid, windspeed, precip, cloudspercentage, lat, lon):
     
     query = f"""Create a picture of landscape with focus on the weather. The weather and landscape should fit the given location. The location is
-    at latitude {lat} and longitude {lon}.
+    at latitude {lat} and longitude {lon}. Make the picture realistic to show how the weather would look like in real life. Do not include any text or symbols. 
+    Do not write the weather data on the picture.
       The weather is {weatherCode}, it is {temp} degrees celsius, the humidity is {humid} percent, the wind speed is {windspeed},
       the amount of downfall is {precip} and the sky has a {cloudspercentage} percentage cloud coverage"""
     

@@ -6,7 +6,7 @@ import re
 
 def appfunction(lat, lon):
 
-    # Coordinates for Bergen. Temporary before user can input own location
+    # Default coordinates for Bergen.
     defaultlatitude = 60.39
     defaultlongitude = 5.32
 
@@ -28,6 +28,7 @@ def appfunction(lat, lon):
                'lat': defaultlatitude,
                'lon': defaultlongitude
           }
+          
     makeWeatherDataRequest(url, headers, params)
     #Getting weather json reader
     weather = WeatherDataParser('weather_data.json')
@@ -46,9 +47,7 @@ def appfunction(lat, lon):
 
     # Generate the image based on the query
     image = generateImage(picquery)
-    #image = 'standin.png'
     text = generateText(textquery)
-    #text = "Test text"
 
     return image, text
 

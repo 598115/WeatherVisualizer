@@ -53,10 +53,12 @@ with gr.Blocks(theme=mytheme, css="""
     generate_button = gr.Button("Get weather data")
 
     # Output for the generated image
-    image_output = gr.Image(label="Generated Image", width=512, height=512, container=True)
+    image_output = gr.Image(label="Generated Image", width=1792, height=1024, container=True)
 
     # Textbox for generated text
     text_output = gr.Textbox(label="Recommendations for the weather", placeholder="Text generates here...", lines=10, elem_classes="custom-textbox")
+
+    gr.Markdown("This website has no affiliations with MET Norway or OpenAI. This is a student project for the Western Norway University of Applied Sciences (HVL) ")
 
     # Set up the button 
     generate_button.click(fn=appfunction, inputs=[lat, long], outputs=[image_output, text_output])

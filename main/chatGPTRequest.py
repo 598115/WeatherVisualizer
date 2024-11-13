@@ -9,9 +9,9 @@ client = OpenAI(
 def generateImage(userprompt):
     try:
         response = client.images.generate(
-            model="dall-e-2",
+            model="dall-e-3",
             prompt=userprompt,
-            size="512x512",
+            size="1792x1024",
             quality="standard",
             n=1,
         )
