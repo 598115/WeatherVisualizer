@@ -63,4 +63,4 @@ with gr.Blocks(theme=mytheme, css="""
     generate_button.click(fn=appfunction, inputs=[lat, long], outputs=[image_output, text_output])
 
 # Launch app
-interface.launch(share=True)
+interface.launch()
